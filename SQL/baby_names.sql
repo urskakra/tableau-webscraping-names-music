@@ -125,7 +125,7 @@ SELECT MAX(Year) AS Last_year, Name, SUM(Count) AS Total
     ORDER BY SUM(Count) DESC
     LIMIT 10;
     
--- Timeless names, that have been around throught all the years observed.
+-- Timeless names, that have been around throughout all the years observed.
 
 SELECT (MAX(Year)-MIN(Year)) AS years_present, Name, SUM(Count) AS Total
 	FROM top_names_states
@@ -193,4 +193,31 @@ SELECT Year, Name, SUM(Count)
 		WHERE Name = 'Cannonball'
 	GROUP BY Year
 	ORDER BY SUM(Count) DESC;
+    
+    
+-- Find unisex names with most occurences.
+
+SELECT top_names_states.Name, Sex, SUM(Count)
+	FROM top_names_states
+    JOIN
+(SELECT Name, SUM(Totals)
+	FROM
+(SELECT top_names_states.Name, Sex, SUM(Count) AS Totals
+	FROM top_names_states
+    JOIN
+(SELECT Name, SUM(Count)
+	FROM top_names_states
+	GROUP BY Name
+		HAVING COUNT(DISTINCT Sex) = 2
+        AND SUM(Count) > 1000) AS unisex_names
+	ON unisex_names.Name = top_names_states.Name
+    GROUP BY Name, Sex
+		HAVING Totals > 1000) AS unisex_top
+	GROUP BY Name
+		HAVING COUNT(DISTINCT Sex) = 2
+        AND MAX(Totals) - MIN(Totals) BETWEEN 1000 AND 50000) AS unisex_final
+	ON unisex_final.Name = top_names_states.Name
+    GROUP BY Name, Sex
+	ORDER BY Name ASC;
+
 
