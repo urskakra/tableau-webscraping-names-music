@@ -200,22 +200,22 @@ SELECT Year, Name, SUM(Count)
 SELECT top_names_states.Name, Sex, SUM(Count)
 	FROM top_names_states
     JOIN
-(SELECT Name, SUM(Totals)
-	FROM
-(SELECT top_names_states.Name, Sex, SUM(Count) AS Totals
-	FROM top_names_states
-    JOIN
-(SELECT Name, SUM(Count)
-	FROM top_names_states
-	GROUP BY Name
-		HAVING COUNT(DISTINCT Sex) = 2
-        AND SUM(Count) > 1000) AS unisex_names
-	ON unisex_names.Name = top_names_states.Name
-    GROUP BY Name, Sex
-		HAVING Totals > 1000) AS unisex_top
-	GROUP BY Name
-		HAVING COUNT(DISTINCT Sex) = 2
-        AND MAX(Totals) - MIN(Totals) BETWEEN 1000 AND 50000) AS unisex_final
+	(SELECT Name, SUM(Totals)
+		FROM
+		(SELECT top_names_states.Name, Sex, SUM(Count) AS Totals
+			FROM top_names_states
+			JOIN
+			(SELECT Name, SUM(Count)
+				FROM top_names_states
+				GROUP BY Name
+					HAVING COUNT(DISTINCT Sex) = 2
+					AND SUM(Count) > 10000) AS unisex_names
+			ON unisex_names.Name = top_names_states.Name
+			GROUP BY Name, Sex
+				HAVING Totals > 10000) AS unisex_top
+		GROUP BY Name
+			HAVING COUNT(DISTINCT Sex) = 2
+			AND MAX(Totals) - MIN(Totals) BETWEEN 10000 AND 100000) AS unisex_final
 	ON unisex_final.Name = top_names_states.Name
     GROUP BY Name, Sex
 	ORDER BY Name ASC;
