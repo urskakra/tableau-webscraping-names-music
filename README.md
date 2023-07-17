@@ -1,5 +1,3 @@
-## Say my name, say my name
-## My name is - Eminem
 
 ## Structure
 
@@ -8,7 +6,7 @@
 ...
 
 
-# What's your name?
+# Hi, What's your name?
 
 Name represents and is a part of each individual's personal identity. 
 
@@ -56,6 +54,12 @@ Insert a piece of code.
 
 Insert a video from Tableau.
 
+<video src="../../../../../../../../Users/urskak/Downloads/Tableau%20Public%20-%20WhatsYourName%20-%2017%20July%202023.mp4" controls title="Title"></video>
+
 ## Conclusions
+
+- Large increase (+250%) in name variety after late 1980s.
+- Longer names (15-letter) introduced after 1980s, with median length of all names 8,5 letters.
+- Pop culture/music influence on naming appears to be stronger after late 1980s. Spike of Kylies, Mariahs and Whitneys.
 
 ## Sources
