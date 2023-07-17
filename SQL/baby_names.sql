@@ -56,19 +56,19 @@ SELECT top_names_states.*, song, decade
 	ON top_names_states.Year = top_chart.year;
   
   
--- Top 30 most unique names of all times (with at least 100 occurences).
+-- Top 30 most unique names of all times (with at least 500 total occurences / avg 5 per last 100 years).
 
 SELECT Name, SUM(Count) AS 'Total' FROM top_names_states
 	WHERE Sex LIKE 'M'
-        AND Count > 100
             GROUP BY Name
+				HAVING SUM(Count) > 500
             ORDER BY SUM(Count) ASC
             LIMIT 30;
             
 SELECT Name, SUM(Count) AS 'Total' FROM top_names_states
 	WHERE Sex LIKE 'F'
-        AND Count > 100
             GROUP BY Name
+				HAVING SUM(Count) > 500
             ORDER BY SUM(Count) ASC
             LIMIT 30;
 
@@ -195,7 +195,7 @@ SELECT Year, Name, SUM(Count)
 	ORDER BY SUM(Count) DESC;
     
     
--- Find unisex names with most occurences.
+-- Find most popular unisex names. Condition: at least 10.000 total occurences per sex, and ratio F/M at least 25%.
 
 SELECT top_names_states.Name, Sex, SUM(Count)
 	FROM top_names_states
@@ -219,5 +219,55 @@ SELECT top_names_states.Name, Sex, SUM(Count)
 	ON unisex_final.Name = top_names_states.Name
     GROUP BY Name, Sex
 	ORDER BY Name ASC;
+    
+SELECT top_names_states.Name, Sex, SUM(Count)
+	FROM top_names_states
+    JOIN
+	(SELECT Name, SUM(Totals)
+		FROM
+		(SELECT top_names_states.Name, Sex, SUM(Count) AS Totals
+			FROM top_names_states
+			JOIN
+			(SELECT Name, SUM(Count)
+				FROM top_names_states
+				GROUP BY Name
+					HAVING COUNT(DISTINCT Sex) = 2
+					AND SUM(Count) > 10000) AS unisex_names
+			ON unisex_names.Name = top_names_states.Name
+			GROUP BY Name, Sex
+				HAVING Totals > 10000) AS unisex_top
+		GROUP BY Name
+			HAVING COUNT(DISTINCT Sex) = 2
+			AND MIN(Totals)/MAX(Totals) > 0.25) AS unisex_final
+	ON unisex_final.Name = top_names_states.Name
+    GROUP BY Name, Sex
+	ORDER BY Name ASC;
+    
+    
+-- Confirm if unisex names from Tableau are really unisex. YES.
+
+SELECT Name, Sex, SUM(Count)
+	FROM top_names_states
+		WHERE Name IN ('Andrew', 'Ashley', 'Amanda', 'Amy', 'Amber', 'Angela', 'Alan',
+        'Austin', 'Anna', 'Alyssa', 'Carlos', 'Carl', 'Chase', 'Caleb', 'Colin',
+        'Cindy', 'Carrie', 'Claire', 'Craig', 'Calvin', 'Carly')
+	GROUP BY Name, Sex
+    ORDER BY Name;
+    
+-- Most popular names in the decade 1920s vs. 2010s
+
+SELECT Name, SUM(Count) AS 'Total' FROM top_names_states
+	WHERE Sex LIKE 'F'
+    AND Year BETWEEN 1910 AND 1919
+		GROUP BY Name
+		ORDER BY SUM(Count) DESC
+		LIMIT 30;
+        
+-- How many James and Maries of all times?
+
+SELECT Name, SUM(Count)
+	FROM top_names_states
+		WHERE Name IN ('James', 'Mary')
+    GROUP BY Name;
 
 

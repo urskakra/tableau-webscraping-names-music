@@ -1,5 +1,4 @@
 ## Say my name, say my name
-## I call your name - The Beetles
 ## My name is - Eminem
 
 ## Structure
@@ -13,7 +12,7 @@
 
 Name represents and is a part of each individual's personal identity. 
 
-Naming their child has always played an important role for parents. There is a controversial belief that a name can influence a child's future, however there are other social context that play a strong role in
+Naming their child has always played an important role for parents. There is a controversial belief that a name can influence a child's future, however there are other social contexts that play a strong role in personal development and success.
 
 Quantitative sociological point of view, cultural traits and changes
 
@@ -29,7 +28,7 @@ Secondly, information on music top charts was obtained from several tables, for 
 
 ## Objective
 
-The main objective was to create a name recommendation prototype, based on 
+The main objective was to create a name recommendation prototype, based on selected parameters, including personal music preference.
 
 understand name popularity evolution throughout the years
 how does naming change according to ethnicity and state throughout the years
