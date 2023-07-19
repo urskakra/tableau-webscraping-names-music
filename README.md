@@ -11,6 +11,8 @@ PPT
 README
 ```
 
+/data not included here, due to large file size
+
 # Hi, What's your name?
 
 Name represents and is a part of each individual's personal identity.
@@ -48,6 +50,8 @@ Using libraries:
 
 ### 2. Joining tables and querying | SQL
 
+Joining tables of names and corresponding top chart music:
+
 ```python
 names = pd.read_sql_query("""
 
@@ -70,27 +74,22 @@ SELECT top_names_states.*, song, decade
 """, engine)
 ```
 
+Final dataset, imported to Tableau:
+
 ![Final dataset](/images/final_dataset.png)
 
 ### 3. Visualization | Tableau
 
 Access [full viz](https://public.tableau.com/app/profile/urska.k/viz/WhatsYourName/Story2) on Tableau Public.
 
-Insert a video from Tableau. Needs to be less than 10 MB - split in two parts.
+<video width="630" height="300" src="Tableau%20Public%20-%20WhatsYourName%20-%20page1.mp4" controls title="Title"></video>
 
-<video width="630" height="300" src="../../../../../../../../Users/urskak/Downloads/Tableau%20Public%20-%20WhatsYourName%20-%2017%20July%202023.mp4" controls title="Title"></video>
-
-
-*Conclusion (remove?)*
-- *Most popular names of past 100 years (James & Mary) — have very low presence after 2000s.*
-- *Large increase (+250%) in name variety after late 1980s.*
-- *Longer names (15-letter) introduced after 1980s, with all times median length 8,5 letters.*
-- *Pop culture/music influence on naming appears to be stronger after late 1980s. Spike of Kylies, Mariahs and Whitneys.*
+<video width="630" height="300" src="Tableau%20Public%20-%20WhatsYourName%20-%20page4.mp4" controls title="Title"></video>
 
 ## Next steps
 
-1. Get dataset with all music, where a user could choose 3 songs - based on type of music, names would be recommended.
-2. Extract all first names of artists, and first names that appear in the song titles, and connect those to the name recommendation.
+1. Get dataset with all music, where a user could choose songs or artists >> based on popularity/uniqueness of these, correspondingly popular/unique names would be recommended.
+2. Extract all first names of artists, and first names that appear in the song titles >> recommend names based on those, corresponding to a year/decade.
 
 ## Sources
 
