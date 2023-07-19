@@ -82,13 +82,9 @@ Final dataset, imported to Tableau:
 
 Access [full viz](https://public.tableau.com/app/profile/urska.k/viz/WhatsYourName/Story2) on Tableau Public.
 
-<video width="630" height="300" src="Tableau%20Public%20-%20WhatsYourName%20-%20page1.mp4" controls title="Title"></video>
-
-
 https://github.com/urskakra/project-final-UK/assets/122735085/1b9bf7ba-0ecf-4fdc-9e27-077e41348cf7
 
-
-<video width="630" height="300" src="Tableau%20Public%20-%20WhatsYourName%20-%20page4.mp4" controls title="Title"></video>
+https://github.com/urskakra/project-final-UK/assets/122735085/0a6f7634-4d19-4fea-8da6-756153c4e8d3
 
 ## Next steps
 
