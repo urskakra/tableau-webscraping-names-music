@@ -80,7 +80,7 @@ Final dataset, imported to Tableau:
 
 ### 3. Visualization | Tableau
 
-Access [full viz](https://public.tableau.com/app/profile/urska.k/viz/WhatsYourName/Story2) on Tableau Public.
+Access [full viz](https://public.tableau.com/app/profile/urska.k/viz/WhatsYourName/Story) on Tableau Public.
 
 https://github.com/urskakra/project-final-UK/assets/122735085/1b9bf7ba-0ecf-4fdc-9e27-077e41348cf7
 
